@@ -1,9 +1,0 @@
-C:\Users\mpadmin\source\repos\Project_4_Team_3 GITHUB\Project_4_Team_3\Project_4_Team_3\bin\Debug\Project_4_Team_3.exe.config
-C:\Users\mpadmin\source\repos\Project_4_Team_3 GITHUB\Project_4_Team_3\Project_4_Team_3\bin\Debug\Project_4_Team_3.exe
-C:\Users\mpadmin\source\repos\Project_4_Team_3 GITHUB\Project_4_Team_3\Project_4_Team_3\bin\Debug\Project_4_Team_3.pdb
-C:\Users\mpadmin\source\repos\Project_4_Team_3 GITHUB\Project_4_Team_3\Project_4_Team_3\obj\Debug\Project_4_Team_3.csprojAssemblyReference.cache
-C:\Users\mpadmin\source\repos\Project_4_Team_3 GITHUB\Project_4_Team_3\Project_4_Team_3\obj\Debug\Project_4_Team_3.Properties.Resources.resources
-C:\Users\mpadmin\source\repos\Project_4_Team_3 GITHUB\Project_4_Team_3\Project_4_Team_3\obj\Debug\Project_4_Team_3.csproj.GenerateResource.cache
-C:\Users\mpadmin\source\repos\Project_4_Team_3 GITHUB\Project_4_Team_3\Project_4_Team_3\obj\Debug\Project_4_Team_3.csproj.CoreCompileInputs.cache
-C:\Users\mpadmin\source\repos\Project_4_Team_3 GITHUB\Project_4_Team_3\Project_4_Team_3\obj\Debug\Project_4_Team_3.exe
-C:\Users\mpadmin\source\repos\Project_4_Team_3 GITHUB\Project_4_Team_3\Project_4_Team_3\obj\Debug\Project_4_Team_3.pdb
