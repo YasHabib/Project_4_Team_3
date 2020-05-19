@@ -4,3 +4,9 @@ C:\Users\mpadmin\source\repos\Team2_Project4\Project_4_Data\obj\Debug\Project_4_
 C:\Users\mpadmin\source\repos\Team2_Project4\Project_4_Data\obj\Debug\Project_4_Data.dll
 C:\Users\mpadmin\source\repos\Team2_Project4\Project_4_Data\obj\Debug\Project_4_Data.pdb
 C:\Users\mpadmin\source\repos\Team2_Project4\Project_4_Data\obj\Debug\Project_4_Data.csprojAssemblyReference.cache
+C:\Users\mpadmin\source\repos\Project_4_Team_3 GITHUB\Team2_Project4\Project_4_Data\bin\Debug\Project_4_Data.dll
+C:\Users\mpadmin\source\repos\Project_4_Team_3 GITHUB\Team2_Project4\Project_4_Data\bin\Debug\Project_4_Data.pdb
+C:\Users\mpadmin\source\repos\Project_4_Team_3 GITHUB\Team2_Project4\Project_4_Data\obj\Debug\Project_4_Data.csprojAssemblyReference.cache
+C:\Users\mpadmin\source\repos\Project_4_Team_3 GITHUB\Team2_Project4\Project_4_Data\obj\Debug\Project_4_Data.csproj.CoreCompileInputs.cache
+C:\Users\mpadmin\source\repos\Project_4_Team_3 GITHUB\Team2_Project4\Project_4_Data\obj\Debug\Project_4_Data.dll
+C:\Users\mpadmin\source\repos\Project_4_Team_3 GITHUB\Team2_Project4\Project_4_Data\obj\Debug\Project_4_Data.pdb

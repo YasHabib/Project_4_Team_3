@@ -64,5 +64,11 @@ namespace TravelExpert_Application
         {
             Application.Exit();
         }
+
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+            frmAddPackage add = new frmAddPackage();
+            add.ShowDialog();
+        }
     }//End of frmPackage
 }//End of namespace
