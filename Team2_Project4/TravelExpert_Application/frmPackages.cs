@@ -62,7 +62,7 @@ namespace TravelExpert_Application
 
         private void btnExit_Click_1(object sender, EventArgs e)
         {
-            Application.Exit();
+            Close();
         }
 
         private void btnAdd_Click(object sender, EventArgs e)

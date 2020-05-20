@@ -36,7 +36,6 @@
             System.Windows.Forms.Label pkgNameLabel;
             System.Windows.Forms.Label pkgStartDateLabel;
             this.txtCommision = new System.Windows.Forms.TextBox();
-            this.packagesBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.txtBasePrice = new System.Windows.Forms.TextBox();
             this.txtDesc = new System.Windows.Forms.TextBox();
             this.txtName = new System.Windows.Forms.TextBox();
@@ -48,6 +47,8 @@
             this.maskedTxtStart = new System.Windows.Forms.MaskedTextBox();
             this.chkAddStart = new System.Windows.Forms.CheckBox();
             this.maskedTxtEnd = new System.Windows.Forms.MaskedTextBox();
+            this.packagesBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.label2 = new System.Windows.Forms.Label();
             pkgAgencyCommissionLabel = new System.Windows.Forms.Label();
             pkgBasePriceLabel = new System.Windows.Forms.Label();
             pkgDescLabel = new System.Windows.Forms.Label();
@@ -60,7 +61,7 @@
             // pkgAgencyCommissionLabel
             // 
             pkgAgencyCommissionLabel.AutoSize = true;
-            pkgAgencyCommissionLabel.Location = new System.Drawing.Point(22, 199);
+            pkgAgencyCommissionLabel.Location = new System.Drawing.Point(22, 225);
             pkgAgencyCommissionLabel.Name = "pkgAgencyCommissionLabel";
             pkgAgencyCommissionLabel.Size = new System.Drawing.Size(104, 13);
             pkgAgencyCommissionLabel.TabIndex = 3;
@@ -69,7 +70,7 @@
             // pkgBasePriceLabel
             // 
             pkgBasePriceLabel.AutoSize = true;
-            pkgBasePriceLabel.Location = new System.Drawing.Point(22, 173);
+            pkgBasePriceLabel.Location = new System.Drawing.Point(22, 199);
             pkgBasePriceLabel.Name = "pkgBasePriceLabel";
             pkgBasePriceLabel.Size = new System.Drawing.Size(61, 13);
             pkgBasePriceLabel.TabIndex = 5;
@@ -87,7 +88,7 @@
             // pkgEndDateLabel
             // 
             pkgEndDateLabel.AutoSize = true;
-            pkgEndDateLabel.Location = new System.Drawing.Point(22, 148);
+            pkgEndDateLabel.Location = new System.Drawing.Point(22, 174);
             pkgEndDateLabel.Name = "pkgEndDateLabel";
             pkgEndDateLabel.Size = new System.Drawing.Size(55, 13);
             pkgEndDateLabel.TabIndex = 9;
@@ -105,7 +106,7 @@
             // pkgStartDateLabel
             // 
             pkgStartDateLabel.AutoSize = true;
-            pkgStartDateLabel.Location = new System.Drawing.Point(22, 118);
+            pkgStartDateLabel.Location = new System.Drawing.Point(22, 144);
             pkgStartDateLabel.Name = "pkgStartDateLabel";
             pkgStartDateLabel.Size = new System.Drawing.Size(58, 13);
             pkgStartDateLabel.TabIndex = 13;
@@ -113,27 +114,20 @@
             // 
             // txtCommision
             // 
-            this.txtCommision.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.packagesBindingSource, "PkgAgencyCommission", true));
-            this.txtCommision.Location = new System.Drawing.Point(154, 196);
+            this.txtCommision.Location = new System.Drawing.Point(154, 222);
             this.txtCommision.Name = "txtCommision";
             this.txtCommision.Size = new System.Drawing.Size(200, 20);
             this.txtCommision.TabIndex = 4;
             // 
-            // packagesBindingSource
-            // 
-            this.packagesBindingSource.DataSource = typeof(Project_4_Data.Packages);
-            // 
             // txtBasePrice
             // 
-            this.txtBasePrice.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.packagesBindingSource, "PkgBasePrice", true));
-            this.txtBasePrice.Location = new System.Drawing.Point(154, 170);
+            this.txtBasePrice.Location = new System.Drawing.Point(154, 196);
             this.txtBasePrice.Name = "txtBasePrice";
             this.txtBasePrice.Size = new System.Drawing.Size(200, 20);
             this.txtBasePrice.TabIndex = 6;
             // 
             // txtDesc
             // 
-            this.txtDesc.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.packagesBindingSource, "PkgDesc", true));
             this.txtDesc.Location = new System.Drawing.Point(154, 67);
             this.txtDesc.Multiline = true;
             this.txtDesc.Name = "txtDesc";
@@ -142,7 +136,6 @@
             // 
             // txtName
             // 
-            this.txtName.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.packagesBindingSource, "PkgName", true));
             this.txtName.Location = new System.Drawing.Point(154, 41);
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(200, 20);
@@ -151,16 +144,17 @@
             // chkAddEnd
             // 
             this.chkAddEnd.AutoSize = true;
-            this.chkAddEnd.Location = new System.Drawing.Point(279, 148);
+            this.chkAddEnd.Location = new System.Drawing.Point(279, 174);
             this.chkAddEnd.Name = "chkAddEnd";
             this.chkAddEnd.Size = new System.Drawing.Size(84, 17);
             this.chkAddEnd.TabIndex = 16;
             this.chkAddEnd.Text = "Check if null";
             this.chkAddEnd.UseVisualStyleBackColor = true;
+            this.chkAddEnd.CheckedChanged += new System.EventHandler(this.chkAddEnd_CheckedChanged);
             // 
             // btnAdd
             // 
-            this.btnAdd.Location = new System.Drawing.Point(95, 230);
+            this.btnAdd.Location = new System.Drawing.Point(95, 256);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(75, 23);
             this.btnAdd.TabIndex = 18;
@@ -170,7 +164,7 @@
             // 
             // btnClear
             // 
-            this.btnClear.Location = new System.Drawing.Point(187, 230);
+            this.btnClear.Location = new System.Drawing.Point(187, 256);
             this.btnClear.Name = "btnClear";
             this.btnClear.Size = new System.Drawing.Size(75, 23);
             this.btnClear.TabIndex = 19;
@@ -180,7 +174,7 @@
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(279, 230);
+            this.btnCancel.Location = new System.Drawing.Point(279, 256);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 23);
             this.btnCancel.TabIndex = 20;
@@ -200,38 +194,50 @@
             // 
             // maskedTxtStart
             // 
-            this.maskedTxtStart.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.packagesBindingSource, "PkgStartDate", true));
-            this.maskedTxtStart.Location = new System.Drawing.Point(154, 118);
+            this.maskedTxtStart.Location = new System.Drawing.Point(154, 144);
             this.maskedTxtStart.Mask = "00/00/0000";
             this.maskedTxtStart.Name = "maskedTxtStart";
             this.maskedTxtStart.Size = new System.Drawing.Size(100, 20);
             this.maskedTxtStart.TabIndex = 22;
-            this.maskedTxtStart.ValidatingType = typeof(System.DateTime);
             // 
             // chkAddStart
             // 
             this.chkAddStart.AutoSize = true;
-            this.chkAddStart.Location = new System.Drawing.Point(279, 121);
+            this.chkAddStart.Location = new System.Drawing.Point(279, 147);
             this.chkAddStart.Name = "chkAddStart";
             this.chkAddStart.Size = new System.Drawing.Size(84, 17);
             this.chkAddStart.TabIndex = 15;
             this.chkAddStart.Text = "Check if null";
             this.chkAddStart.UseVisualStyleBackColor = true;
+            this.chkAddStart.CheckedChanged += new System.EventHandler(this.chkAddStart_CheckedChanged);
             // 
             // maskedTxtEnd
             // 
-            this.maskedTxtEnd.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.packagesBindingSource, "PkgEndDate", true));
-            this.maskedTxtEnd.Location = new System.Drawing.Point(154, 145);
+            this.maskedTxtEnd.Location = new System.Drawing.Point(154, 171);
             this.maskedTxtEnd.Mask = "00/00/0000";
             this.maskedTxtEnd.Name = "maskedTxtEnd";
             this.maskedTxtEnd.Size = new System.Drawing.Size(100, 20);
             this.maskedTxtEnd.TabIndex = 23;
             // 
+            // packagesBindingSource
+            // 
+            this.packagesBindingSource.DataSource = typeof(Project_4_Data.Packages);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(151, 128);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(65, 13);
+            this.label2.TabIndex = 24;
+            this.label2.Text = "mm/dd/yyyy";
+            // 
             // frmAddPackage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(457, 265);
+            this.ClientSize = new System.Drawing.Size(403, 293);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.maskedTxtEnd);
             this.Controls.Add(this.maskedTxtStart);
             this.Controls.Add(this.label1);
@@ -251,7 +257,8 @@
             this.Controls.Add(this.txtName);
             this.Controls.Add(pkgStartDateLabel);
             this.Name = "frmAddPackage";
-            this.Text = "frmAddPackage";
+            this.Text = "Add Packages";
+            this.Load += new System.EventHandler(this.frmAddPackage_Load);
             ((System.ComponentModel.ISupportInitialize)(this.packagesBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -273,5 +280,6 @@
         private System.Windows.Forms.MaskedTextBox maskedTxtStart;
         private System.Windows.Forms.CheckBox chkAddStart;
         private System.Windows.Forms.MaskedTextBox maskedTxtEnd;
+        private System.Windows.Forms.Label label2;
     }
 }

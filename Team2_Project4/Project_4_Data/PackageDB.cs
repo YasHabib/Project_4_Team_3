@@ -278,6 +278,7 @@ namespace Project_4_Data
                     cmd.Parameters.AddWithValue("@PkgName", pack.PkgName);
                     cmd.Parameters.AddWithValue("@PkgDesc", pack.PkgDesc);
                     //description
+
                     //Start date
                     if (pack.PkgStartDate == null)
                         cmd.Parameters.AddWithValue("@PkgStartDate", DBNull.Value);

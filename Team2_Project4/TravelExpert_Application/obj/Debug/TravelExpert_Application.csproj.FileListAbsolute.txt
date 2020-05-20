@@ -27,3 +27,4 @@ C:\Users\mpadmin\source\repos\Project_4_Team_3 GITHUB\Team2_Project4\TravelExper
 C:\Users\mpadmin\source\repos\Project_4_Team_3 GITHUB\Team2_Project4\TravelExpert_Application\obj\Debug\TravelExpert_Application.csproj.CopyComplete
 C:\Users\mpadmin\source\repos\Project_4_Team_3 GITHUB\Team2_Project4\TravelExpert_Application\obj\Debug\TravelExpert_Application.exe
 C:\Users\mpadmin\source\repos\Project_4_Team_3 GITHUB\Team2_Project4\TravelExpert_Application\obj\Debug\TravelExpert_Application.pdb
+C:\Users\mpadmin\source\repos\Project_4_Team_3 GITHUB\Team2_Project4\TravelExpert_Application\obj\Debug\TravelExpert_Application.frmMain.resources

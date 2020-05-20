@@ -27,6 +27,7 @@ namespace TravelExpert_Application
         {
             //packagesBindingSource.Clear();
             packagesBindingSource.Add(packageNow);
+            Refresh();
         }
         //Cancel
         private void btnCancel_Click(object sender, EventArgs e)
@@ -48,7 +49,16 @@ namespace TravelExpert_Application
             {
                 this.DialogResult = DialogResult.Retry;
             }
+        }
 
+        private void ckboxNullStart_CheckedChanged(object sender, EventArgs e)
+        {
+            dateTimeStart.CustomFormat = "";
+        }
+
+        private void ckboxNullEnd_CheckedChanged(object sender, EventArgs e)
+        {
+            dateTimeEnd.CustomFormat = "";
         }
     }//end of Update
 }//End of namespace

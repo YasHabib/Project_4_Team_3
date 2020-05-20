@@ -39,6 +39,7 @@
             this.ckboxNullStart = new System.Windows.Forms.CheckBox();
             this.ckboxNullEnd = new System.Windows.Forms.CheckBox();
             this.txtAgencyCommission = new System.Windows.Forms.TextBox();
+            this.packagesBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.txtBasePrice = new System.Windows.Forms.TextBox();
             this.btnSave = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
@@ -46,7 +47,6 @@
             this.lblPkgId = new System.Windows.Forms.Label();
             this.txtDescription = new System.Windows.Forms.TextBox();
             this.lblTitle = new System.Windows.Forms.Label();
-            this.packagesBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dateTimeEnd = new System.Windows.Forms.DateTimePicker();
             this.dateTimeStart = new System.Windows.Forms.DateTimePicker();
             lblId = new System.Windows.Forms.Label();
@@ -131,6 +131,7 @@
             this.ckboxNullStart.TabIndex = 33;
             this.ckboxNullStart.Text = "Check if Null";
             this.ckboxNullStart.UseVisualStyleBackColor = true;
+            this.ckboxNullStart.CheckedChanged += new System.EventHandler(this.ckboxNullStart_CheckedChanged);
             // 
             // ckboxNullEnd
             // 
@@ -141,6 +142,7 @@
             this.ckboxNullEnd.TabIndex = 32;
             this.ckboxNullEnd.Text = "Check if Null";
             this.ckboxNullEnd.UseVisualStyleBackColor = true;
+            this.ckboxNullEnd.CheckedChanged += new System.EventHandler(this.ckboxNullEnd_CheckedChanged);
             // 
             // txtAgencyCommission
             // 
@@ -149,6 +151,10 @@
             this.txtAgencyCommission.Name = "txtAgencyCommission";
             this.txtAgencyCommission.Size = new System.Drawing.Size(200, 20);
             this.txtAgencyCommission.TabIndex = 21;
+            // 
+            // packagesBindingSource
+            // 
+            this.packagesBindingSource.DataSource = typeof(Project_4_Data.Packages);
             // 
             // txtBasePrice
             // 
@@ -216,10 +222,6 @@
             this.lblTitle.Size = new System.Drawing.Size(117, 18);
             this.lblTitle.TabIndex = 42;
             this.lblTitle.Text = "Update Package";
-            // 
-            // packagesBindingSource
-            // 
-            this.packagesBindingSource.DataSource = typeof(Project_4_Data.Packages);
             // 
             // dateTimeEnd
             // 
