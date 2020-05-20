@@ -46,11 +46,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="frmAddModifySupplier.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmAddModifySupplier.Designer.cs">
+      <DependentUpon>frmAddModifySupplier.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmPackages.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmPackages.Designer.cs">
       <DependentUpon>frmPackages.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmSuppliers.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSuppliers.Designer.cs">
+      <DependentUpon>frmSuppliers.cs</DependentUpon>
     </Compile>
     <Compile Include="frmUpdate_Add.cs">
       <SubType>Form</SubType>
@@ -61,8 +73,15 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Validation.cs" />
+    <Compile Include="Validator.cs" />
+    <EmbeddedResource Include="frmAddModifySupplier.resx">
+      <DependentUpon>frmAddModifySupplier.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmPackages.resx">
       <DependentUpon>frmPackages.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSuppliers.resx">
+      <DependentUpon>frmSuppliers.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmUpdate_Add.resx">
       <DependentUpon>frmUpdate_Add.cs</DependentUpon>
@@ -78,6 +97,8 @@
     </Compile>
     <None Include="Properties\DataSources\Project_4_Data.PackageDB.datasource" />
     <None Include="Properties\DataSources\Project_4_Data.Packages.datasource" />
+    <None Include="Properties\DataSources\Project_4_Data.Suppliers.datasource" />
+    <None Include="Properties\DataSources\Project_4_Data.SuppliersDB.datasource" />
     <None Include="Properties\DataSources\Project_4_Data.TravelExpertConnection.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

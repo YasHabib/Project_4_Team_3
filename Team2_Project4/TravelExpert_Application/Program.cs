@@ -16,7 +16,7 @@ namespace TravelExpert_Application
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmPackages());
+            Application.Run(new frmSuppliers());
         }
     }
 }
