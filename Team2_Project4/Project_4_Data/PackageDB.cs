@@ -27,13 +27,13 @@ namespace Project_4_Data
             {
                 con.Open();
                 SqlDataReader reader = cmd.ExecuteReader();
-                while (reader.Read()) // while there is another record
+                while (reader.Read())
                 {
                     pk = new Packages();
                     pk.PackgeId = (int)reader["PackageId"];
                     pk.PkgName = reader["PkgName"].ToString();
-                    pk.PkgStartDate = Convert.ToDateTime(reader["PkgStartDate"]); //nullable
-                    pk.PkgEndDate = Convert.ToDateTime(reader["PkgEndDate"]); //nullable
+                    //pk.PkgStartDate = Convert.ToDateTime(reader["PkgStartDate"]); //nullable
+                    //pk.PkgEndDate = Convert.ToDateTime(reader["PkgEndDate"]); //nullable
                     pk.PkgDesc = reader["PkgDesc"].ToString();
                     pk.PkgBasePrice = (decimal)reader["PkgBasePrice"];
                     pk.PkgAgencyCommission = (decimal)reader["PkgAgencyCommission"];
@@ -44,11 +44,11 @@ namespace Project_4_Data
 
                     int dateStart = reader.GetOrdinal("PkgStartDate");
                     int dateEnd = reader.GetOrdinal("PkgEndDate");
-                    if (reader.IsDBNull(dateStart) || reader.IsDBNull(dateEnd))
-                    {
+                    if(reader.IsDBNull(dateStart))
                         pk.PkgStartDate = null;
+                    else if (reader.IsDBNull(dateEnd))
                         pk.PkgEndDate = null;
-                    }
+
                     else // it is not null
                     {
                         pk.PkgStartDate = Convert.ToDateTime(reader["PkgStartDate"]);
@@ -86,8 +86,8 @@ namespace Project_4_Data
                 {
                     p = new Packages();
                     p.PkgName = reader["PkgName"].ToString();
-                    p.PkgStartDate = Convert.ToDateTime(reader["PkgStartDate"]); //nullable
-                    p.PkgEndDate = Convert.ToDateTime(reader["PkgEndDate"]); //nullable
+                    //p.PkgStartDate = Convert.ToDateTime(reader["PkgStartDate"]); //nullable
+                    //p.PkgEndDate = Convert.ToDateTime(reader["PkgEndDate"]); //nullable
                     p.PkgDesc = reader["PkgDesc"].ToString();
                     p.PkgBasePrice = (decimal)reader["PkgBasePrice"];
                     p.PkgAgencyCommission = (decimal)reader["PkgAgencyCommission"];
@@ -131,7 +131,7 @@ namespace Project_4_Data
                                          "    PkgEndDate = @NewPkgEndDate, " +
                                          "    PkgBasePrice = @NewPkgBasePrice, " +
                                          "    PkgAgencyCommission = @NewPkgAgencyCommission " +
-                                         "WHERE PackageId = @OldPackageId " +
+                                         "WHERE PackageId = @OldPackageId "+
                                         "AND PkgName = @OldPkgName " +
                                         "AND PkgDesc = @OldPkgDesc " +
                                         "AND (PkgStartDate = @OldPkgStartDate OR " +                //Nullable
@@ -150,13 +150,8 @@ namespace Project_4_Data
                     cmd.Parameters.AddWithValue("@NewPkgBasePrice", newPack.PkgBasePrice);
                     cmd.Parameters.AddWithValue("@NewPkgAgencyCommission", newPack.PkgAgencyCommission);
 
-                    ////description
-                    //if (string.IsNullOrEmpty(newPack.PkgDesc))
-                    //    cmd.Parameters.AddWithValue("@OldPkgDesc", oldPack.PkgDesc);   //keep the old value 
-                    //else
-                    //    cmd.Parameters.AddWithValue("@NewPkgDesc", newPack.PkgDesc);
-
                     //New Start date
+    
                     if (newPack.PkgStartDate == null)
                         cmd.Parameters.AddWithValue("@NewPkgStartDate", DBNull.Value);
                     else
@@ -166,24 +161,20 @@ namespace Project_4_Data
                         cmd.Parameters.AddWithValue("@NewPkgEndDate", DBNull.Value);
                     else
                         cmd.Parameters.AddWithValue("@NewPkgEndDate", (DateTime)newPack.PkgEndDate);
-                    //Agency commission
-                    //if (newPack.PkgAgencyCommission == null)
-                    //    cmd.Parameters.AddWithValue("@NewPkgAgencyCommission", DBNull.Value);
-                    //else
-                    //    cmd.Parameters.AddWithValue("@NewPkgAgencyCommission", newPack.PkgAgencyCommission);
+
 
 
                     //******OLD Packages data*********
                     cmd.Parameters.AddWithValue("@OldPackageId", oldPack.PackgeId);
                     cmd.Parameters.AddWithValue("@OldPkgName", oldPack.PkgName);
                     cmd.Parameters.AddWithValue("@OldPkgDesc", oldPack.PkgDesc);
-                    //New Start date
-                    if (newPack.PkgStartDate == null)
+                    //old Start date
+                    if (oldPack.PkgStartDate == null)
                         cmd.Parameters.AddWithValue("@OldPkgStartDate", DBNull.Value);
                     else
                         cmd.Parameters.AddWithValue("@OldPkgStartDate", (DateTime)oldPack.PkgStartDate);
-                    //New End date
-                    if (newPack.PkgEndDate == null)
+                    //old End date
+                    if (oldPack.PkgEndDate == null)
                         cmd.Parameters.AddWithValue("@OldPkgEndDate", DBNull.Value);
                     else
                         cmd.Parameters.AddWithValue("@OldPkgEndDate", (DateTime)oldPack.PkgEndDate);
@@ -278,7 +269,6 @@ namespace Project_4_Data
                     cmd.Parameters.AddWithValue("@PkgName", pack.PkgName);
                     cmd.Parameters.AddWithValue("@PkgDesc", pack.PkgDesc);
                     //description
-
                     //Start date
                     if (pack.PkgStartDate == null)
                         cmd.Parameters.AddWithValue("@PkgStartDate", DBNull.Value);

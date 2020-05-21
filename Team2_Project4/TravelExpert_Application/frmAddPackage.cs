@@ -26,7 +26,7 @@ namespace TravelExpert_Application
             //if (chkAddEnd.Checked == true)
             //    maskedTxtEnd.Enabled = false;
         }
-        //Start date NULL
+
         private void chkAddStart_CheckedChanged(object sender, EventArgs e)
         {
             //if (chkAddStart.Checked)
@@ -35,11 +35,10 @@ namespace TravelExpert_Application
             //    newPackage.PkgStartDate = null;
             //}
             //else
-            //{
-            //    maskedTxtStart.Enabled = true;
-            //}
+            //   maskedTxtStart.Enabled = true;
         }
-        //End date NULL
+
+
         private void chkAddEnd_CheckedChanged(object sender, EventArgs e)
         {
             //if (chkAddEnd.Checked)
@@ -48,55 +47,56 @@ namespace TravelExpert_Application
             //    newPackage.PkgEndDate = null;
             //}
             //else
-            //{
             //    maskedTxtEnd.Enabled = true;
-            //}
+
         }
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            //Without validation (Works, except null)
-            //newPackage.PkgName = txtName.Text;
-            //newPackage.PkgDesc = txtDesc.Text;
-            //newPackage.PkgStartDate = Convert.ToDateTime(maskedTxtStart.Text);
-            //newPackage.PkgEndDate = Convert.ToDateTime(maskedTxtEnd.Text);
-            //newPackage.PkgBasePrice = Convert.ToDecimal(txtBasePrice.Text);
-            //newPackage.PkgAgencyCommission = Convert.ToDecimal(txtCommision.Text);
 
-            //Validation
-            //Name and Description
-            if (txtName.Text == "")
-                MessageBox.Show("Please enter a name", "Input Error");
-            else
+            //Validations
+            //name
+            if (Validation.ValidNull(txtName))
                 newPackage.PkgName = txtName.Text;
 
-            if (txtDesc.Text == "")
-                MessageBox.Show("Please enter a description", "Input Error");
-            else
+            //description
+            if (Validation.ValidNull(txtDesc))
                 newPackage.PkgDesc = txtDesc.Text;
 
+            //Start and End date
 
-
-            //Dates
-            if (maskedTxtStart.Text == "")
-                newPackage.PkgStartDate = null;
-            else if (maskedTxtEnd.Text == "")
-                newPackage.PkgEndDate = null;
-            else
+            if(Validation.ValidDate(txtStart, txtEnd))
             {
-                //string dateStartString = @"20/05/2012";
-                //DateTime startDate = DateTime.ParseExact(dateStartString, @"d/M/yyyy",
-                //    System.Globalization.CultureInfo.InvariantCulture);
-
-                DateTime startDate = Convert.ToDateTime(maskedTxtStart.Text); //Error here
-                DateTime endDate = Convert.ToDateTime(maskedTxtEnd.Text); //Error here
-                if (startDate < endDate)
-                    MessageBox.Show("Start date needs to be before end date");
+                //start
+                if (txtStart.Text == "")
+                    newPackage.PkgStartDate = null;
                 else
-                {
-                    newPackage.PkgStartDate = Convert.ToDateTime(maskedTxtStart.Text);
-                    newPackage.PkgEndDate = Convert.ToDateTime(maskedTxtEnd.Text);
-                }
+                    newPackage.PkgStartDate = Convert.ToDateTime(txtStart.Text);
+
+                //end
+                if (txtEnd.Text == "")
+                    newPackage.PkgEndDate = null;
+                else
+                    newPackage.PkgEndDate = Convert.ToDateTime(txtEnd.Text);
             }
+
+
+            //if (txtStart.Text == "")
+            //    newPackage.PkgStartDate = null;
+            //else if (txtEnd.Text == "")
+            //    newPackage.PkgEndDate = null;
+            //else
+            //{               
+            //    DateTime startDate = Convert.ToDateTime(txtStart.Text);
+            //    DateTime endDate = Convert.ToDateTime(txtEnd.Text);
+            //    if (startDate < endDate)
+            //        MessageBox.Show("Start date needs to be before end date");
+            //    else
+            //    {
+            //        newPackage.PkgStartDate = startDate;
+            //        newPackage.PkgEndDate = endDate;
+            //    }
+            //}
+
 
 
             //Prices
@@ -107,76 +107,16 @@ namespace TravelExpert_Application
                 decimal basePrice = Convert.ToDecimal(txtBasePrice.Text);
                 decimal commissionPrice = Convert.ToDecimal(txtCommision.Text);
                 if (basePrice < commissionPrice)
-                    MessageBox.Show("Base price need to be higher than Agency Commission");
-                else
-                {
-                    newPackage.PkgBasePrice = Convert.ToDecimal(txtBasePrice.Text);
-                    newPackage.PkgAgencyCommission = Convert.ToDecimal(txtCommision.Text);
-                }
+                    MessageBox.Show("Base price needs to be higher than commission price");
+                else if (Validation.ValidNeg(txtBasePrice))
+                    newPackage.PkgBasePrice = basePrice;
+                else if (Validation.ValidNeg(txtCommision))
+                    newPackage.PkgAgencyCommission = commissionPrice;
             }
 
 
-
-
-
-
-
-
-            ////Validations
-            ////name
-            //if (Validation.ValidNull(txtName))
-            //    newPackage.PkgName = txtName.Text;
-
-            ////description
-            //if (Validation.ValidNull(txtDesc))
-            //    newPackage.PkgDesc = txtDesc.Text;
-
-            ////Start Date  
-
-
-            //if (Validation.ValidDate(maskedTxtStart, maskedTxtEnd))
-            //{
-
-            //    if ((chkAddStart.Checked == false) && (maskedTxtStart.Text == ""))
-            //        MessageBox.Show("Please check null box or enter a valid date for start date", "Input error");
-
-            //    else if ((chkAddEnd.Checked == false) && (maskedTxtEnd.Text == ""))
-            //        MessageBox.Show("Please check null box or enter a valid date for end date", "Input error");
-            //    else
-            //    {
-            //        newPackage.PkgStartDate = Convert.ToDateTime(maskedTxtStart.Text);
-            //        newPackage.PkgEndDate = Convert.ToDateTime(maskedTxtEnd.Text);
-            //    }
-
-            //}
-            ////if (maskedTxtStart.Text != null)
-            ////    newPackage.PkgStartDate = Convert.ToDateTime(maskedTxtStart.Text);
-
-            ////else
-            ////newPackage.PkgStartDate = Convert.ToDateTime(maskedTxtStart.Text);
-
-            ////End date
-            ////if (maskedTxtEnd.Text != null)
-
-            //////else
-            ////newPackage.PkgEndDate = Convert.ToDateTime(maskedTxtEnd.Text);
-
-
-            ////*****Prices***
-            ////Base price
-            //if (Validation.ValidNull(txtBasePrice))
-            //{
-            //    decimal basePrice = Convert.ToDecimal(txtBasePrice.Text);
-            //    decimal commissionPrice = Convert.ToDecimal(txtCommision.Text);
-            //    //Making sure base price is not lower than agency commission
-            //    if (basePrice < commissionPrice)
-            //        MessageBox.Show("Base price needs to be higher than commission price");
-            //    else if ((Validation.ValidNeg(txtBasePrice)) && (Validation.ValidNull(txtBasePrice)))
-            //        newPackage.PkgBasePrice = basePrice;
-            //    else if (Validation.ValidNeg(txtCommision))
-            //        newPackage.PkgAgencyCommission = commissionPrice;
-            //}
-
+            //if (((chkAddEnd.Checked == false) || (chkAddStart.Checked == false)) && ((maskedTxtStart.Text == null) || (maskedTxtEnd.Text == null)))
+            //    MessageBox.Show("Please check null box or enter a valid date", "Input error");
             try
             {
                 newPackage.PackgeId = PackageDB.AddPackage(newPackage);
@@ -184,7 +124,7 @@ namespace TravelExpert_Application
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error while adding" + ex.Message, ex.GetType().ToString());
+                MessageBox.Show(ex.Message, ex.GetType().ToString());
                 this.DialogResult = DialogResult.Retry;
             }
 

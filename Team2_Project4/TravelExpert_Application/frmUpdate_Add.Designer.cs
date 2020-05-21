@@ -36,10 +36,7 @@
             System.Windows.Forms.Label pkgEndDateLabel;
             System.Windows.Forms.Label pkgNameLabel;
             System.Windows.Forms.Label pkgStartDateLabel;
-            this.ckboxNullStart = new System.Windows.Forms.CheckBox();
-            this.ckboxNullEnd = new System.Windows.Forms.CheckBox();
             this.txtAgencyCommission = new System.Windows.Forms.TextBox();
-            this.packagesBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.txtBasePrice = new System.Windows.Forms.TextBox();
             this.btnSave = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
@@ -49,6 +46,8 @@
             this.lblTitle = new System.Windows.Forms.Label();
             this.dateTimeEnd = new System.Windows.Forms.DateTimePicker();
             this.dateTimeStart = new System.Windows.Forms.DateTimePicker();
+            this.label1 = new System.Windows.Forms.Label();
+            this.packagesBindingSource = new System.Windows.Forms.BindingSource(this.components);
             lblId = new System.Windows.Forms.Label();
             pkgAgencyCommissionLabel = new System.Windows.Forms.Label();
             pkgBasePriceLabel = new System.Windows.Forms.Label();
@@ -122,28 +121,6 @@
             pkgStartDateLabel.TabIndex = 30;
             pkgStartDateLabel.Text = "Start Date:";
             // 
-            // ckboxNullStart
-            // 
-            this.ckboxNullStart.AutoSize = true;
-            this.ckboxNullStart.Location = new System.Drawing.Point(349, 158);
-            this.ckboxNullStart.Name = "ckboxNullStart";
-            this.ckboxNullStart.Size = new System.Drawing.Size(86, 17);
-            this.ckboxNullStart.TabIndex = 33;
-            this.ckboxNullStart.Text = "Check if Null";
-            this.ckboxNullStart.UseVisualStyleBackColor = true;
-            this.ckboxNullStart.CheckedChanged += new System.EventHandler(this.ckboxNullStart_CheckedChanged);
-            // 
-            // ckboxNullEnd
-            // 
-            this.ckboxNullEnd.AutoSize = true;
-            this.ckboxNullEnd.Location = new System.Drawing.Point(350, 183);
-            this.ckboxNullEnd.Name = "ckboxNullEnd";
-            this.ckboxNullEnd.Size = new System.Drawing.Size(86, 17);
-            this.ckboxNullEnd.TabIndex = 32;
-            this.ckboxNullEnd.Text = "Check if Null";
-            this.ckboxNullEnd.UseVisualStyleBackColor = true;
-            this.ckboxNullEnd.CheckedChanged += new System.EventHandler(this.ckboxNullEnd_CheckedChanged);
-            // 
             // txtAgencyCommission
             // 
             this.txtAgencyCommission.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.packagesBindingSource, "PkgAgencyCommission", true));
@@ -151,10 +128,6 @@
             this.txtAgencyCommission.Name = "txtAgencyCommission";
             this.txtAgencyCommission.Size = new System.Drawing.Size(200, 20);
             this.txtAgencyCommission.TabIndex = 21;
-            // 
-            // packagesBindingSource
-            // 
-            this.packagesBindingSource.DataSource = typeof(Project_4_Data.Packages);
             // 
             // txtBasePrice
             // 
@@ -225,33 +198,54 @@
             // 
             // dateTimeEnd
             // 
+            this.dateTimeEnd.CustomFormat = " ";
             this.dateTimeEnd.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.packagesBindingSource, "PkgEndDate", true));
+            this.dateTimeEnd.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dateTimeEnd.Location = new System.Drawing.Point(143, 184);
             this.dateTimeEnd.Name = "dateTimeEnd";
+            this.dateTimeEnd.ShowCheckBox = true;
             this.dateTimeEnd.Size = new System.Drawing.Size(200, 20);
             this.dateTimeEnd.TabIndex = 27;
+            this.dateTimeEnd.ValueChanged += new System.EventHandler(this.dateTimeEnd_ValueChanged);
+            this.dateTimeEnd.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dateTimeEnd_KeyDown);
             // 
             // dateTimeStart
             // 
+            this.dateTimeStart.CustomFormat = " ";
             this.dateTimeStart.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.packagesBindingSource, "PkgStartDate", true));
+            this.dateTimeStart.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dateTimeStart.Location = new System.Drawing.Point(143, 158);
             this.dateTimeStart.Name = "dateTimeStart";
+            this.dateTimeStart.ShowCheckBox = true;
             this.dateTimeStart.Size = new System.Drawing.Size(200, 20);
             this.dateTimeStart.TabIndex = 31;
+            this.dateTimeStart.ValueChanged += new System.EventHandler(this.dateTimeStart_ValueChanged);
+            this.dateTimeStart.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dateTimeStart_KeyDown);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(350, 161);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(0, 13);
+            this.label1.TabIndex = 43;
+            // 
+            // packagesBindingSource
+            // 
+            this.packagesBindingSource.DataSource = typeof(Project_4_Data.Packages);
             // 
             // frmUpdate_Add
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(449, 309);
+            this.ClientSize = new System.Drawing.Size(359, 309);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.lblTitle);
             this.Controls.Add(this.txtDescription);
             this.Controls.Add(this.lblPkgId);
             this.Controls.Add(this.txtPkgName);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnSave);
-            this.Controls.Add(this.ckboxNullStart);
-            this.Controls.Add(this.ckboxNullEnd);
             this.Controls.Add(lblId);
             this.Controls.Add(pkgAgencyCommissionLabel);
             this.Controls.Add(this.txtAgencyCommission);
@@ -264,7 +258,7 @@
             this.Controls.Add(pkgStartDateLabel);
             this.Controls.Add(this.dateTimeStart);
             this.Name = "frmUpdate_Add";
-            this.Text = "frmUpdate_Add";
+            this.Text = "Update";
             this.Load += new System.EventHandler(this.frmUpdate_Add_Load);
             ((System.ComponentModel.ISupportInitialize)(this.packagesBindingSource)).EndInit();
             this.ResumeLayout(false);
@@ -273,9 +267,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.CheckBox ckboxNullStart;
-        private System.Windows.Forms.CheckBox ckboxNullEnd;
         private System.Windows.Forms.TextBox txtAgencyCommission;
         private System.Windows.Forms.TextBox txtBasePrice;
         private System.Windows.Forms.Button btnSave;
@@ -287,5 +278,6 @@
         private System.Windows.Forms.Label lblTitle;
         private System.Windows.Forms.DateTimePicker dateTimeEnd;
         private System.Windows.Forms.DateTimePicker dateTimeStart;
+        private System.Windows.Forms.Label label1;
     }
 }

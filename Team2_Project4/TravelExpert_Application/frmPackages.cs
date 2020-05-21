@@ -24,16 +24,16 @@ namespace TravelExpert_Application
 
         private void frmPackages_Load(object sender, EventArgs e)
         {
-            try
-            {
+            //try
+            //{
                 packages = PackageDB.GetAllPackages();
                 grdPackages.DataSource = packages;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error while loading packages: " + ex.Message,
-                    ex.GetType().ToString());
-            }
+            //}
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show("Error while loading packages: " + ex.Message,
+            //        ex.GetType().ToString());
+            //}
         }//End of form load
 
         private void grdPackages_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -69,6 +69,8 @@ namespace TravelExpert_Application
         {
             frmAddPackage add = new frmAddPackage();
             add.ShowDialog();
+            CurrencyManager cm = (CurrencyManager)grdPackages.BindingContext[packages];
+            cm.Refresh();
         }
     }//End of frmPackage
 }//End of namespace

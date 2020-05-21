@@ -33,10 +33,8 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.grdPackages = new System.Windows.Forms.DataGridView();
             this.packagesBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.btnAddPackage = new System.Windows.Forms.Button();
-            this.btnExit = new System.Windows.Forms.Button();
+            this.grdPackages = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -45,9 +43,15 @@
             this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clmUpdate = new System.Windows.Forms.DataGridViewButtonColumn();
-            ((System.ComponentModel.ISupportInitialize)(this.grdPackages)).BeginInit();
+            this.btnAddPackage = new System.Windows.Forms.Button();
+            this.btnExit = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.packagesBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.grdPackages)).BeginInit();
             this.SuspendLayout();
+            // 
+            // packagesBindingSource
+            // 
+            this.packagesBindingSource.DataSource = typeof(Project_4_Data.Packages);
             // 
             // grdPackages
             // 
@@ -70,30 +74,6 @@
             this.grdPackages.TabIndex = 1;
             this.grdPackages.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grdPackages_CellContentClick);
             // 
-            // packagesBindingSource
-            // 
-            this.packagesBindingSource.DataSource = typeof(Project_4_Data.Packages);
-            // 
-            // btnAddPackage
-            // 
-            this.btnAddPackage.Location = new System.Drawing.Point(234, 337);
-            this.btnAddPackage.Name = "btnAddPackage";
-            this.btnAddPackage.Size = new System.Drawing.Size(158, 23);
-            this.btnAddPackage.TabIndex = 2;
-            this.btnAddPackage.Text = "&Add Package";
-            this.btnAddPackage.UseVisualStyleBackColor = true;
-            this.btnAddPackage.Click += new System.EventHandler(this.btnAdd_Click);
-            // 
-            // btnExit
-            // 
-            this.btnExit.Location = new System.Drawing.Point(399, 337);
-            this.btnExit.Name = "btnExit";
-            this.btnExit.Size = new System.Drawing.Size(150, 23);
-            this.btnExit.TabIndex = 3;
-            this.btnExit.Text = "&Close";
-            this.btnExit.UseVisualStyleBackColor = true;
-            this.btnExit.Click += new System.EventHandler(this.btnExit_Click_1);
-            // 
             // dataGridViewTextBoxColumn1
             // 
             this.dataGridViewTextBoxColumn1.DataPropertyName = "PackgeId";
@@ -113,6 +93,7 @@
             // 
             this.dataGridViewTextBoxColumn3.DataPropertyName = "PkgStartDate";
             dataGridViewCellStyle1.Format = "d";
+            dataGridViewCellStyle1.NullValue = "N/A";
             this.dataGridViewTextBoxColumn3.DefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridViewTextBoxColumn3.HeaderText = "Start Date";
             this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
@@ -123,6 +104,7 @@
             // 
             this.dataGridViewTextBoxColumn4.DataPropertyName = "PkgEndDate";
             dataGridViewCellStyle2.Format = "d";
+            dataGridViewCellStyle2.NullValue = "N/A";
             this.dataGridViewTextBoxColumn4.DefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridViewTextBoxColumn4.HeaderText = "End Date";
             this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
@@ -163,6 +145,26 @@
             this.clmUpdate.Text = "Update";
             this.clmUpdate.UseColumnTextForButtonValue = true;
             // 
+            // btnAddPackage
+            // 
+            this.btnAddPackage.Location = new System.Drawing.Point(234, 337);
+            this.btnAddPackage.Name = "btnAddPackage";
+            this.btnAddPackage.Size = new System.Drawing.Size(158, 23);
+            this.btnAddPackage.TabIndex = 2;
+            this.btnAddPackage.Text = "&Add Package";
+            this.btnAddPackage.UseVisualStyleBackColor = true;
+            this.btnAddPackage.Click += new System.EventHandler(this.btnAdd_Click);
+            // 
+            // btnExit
+            // 
+            this.btnExit.Location = new System.Drawing.Point(399, 337);
+            this.btnExit.Name = "btnExit";
+            this.btnExit.Size = new System.Drawing.Size(150, 23);
+            this.btnExit.TabIndex = 3;
+            this.btnExit.Text = "&Close";
+            this.btnExit.UseVisualStyleBackColor = true;
+            this.btnExit.Click += new System.EventHandler(this.btnExit_Click_1);
+            // 
             // frmPackages
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -174,8 +176,8 @@
             this.Name = "frmPackages";
             this.Text = "Packages";
             this.Load += new System.EventHandler(this.frmPackages_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.grdPackages)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.packagesBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.grdPackages)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -185,7 +187,6 @@
         private System.Windows.Forms.BindingSource packagesBindingSource;
         private System.Windows.Forms.DataGridView grdPackages;
         private System.Windows.Forms.Button btnAddPackage;
-        private System.Windows.Forms.Button btnExit;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
@@ -194,6 +195,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
         private System.Windows.Forms.DataGridViewButtonColumn clmUpdate;
+        private System.Windows.Forms.Button btnExit;
     }
 }
 

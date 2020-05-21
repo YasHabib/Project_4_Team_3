@@ -16,7 +16,22 @@ namespace TravelExpert_Application
     {
         public Packages packageNow; //new updated package
         public Packages packageOld; //old package from frmPackages
-        //List<Packages> pkg = new List<Packages>();
+                                    //List<Packages> pkg = new List<Packages>();
+        private void ckboxNullStart_CheckedChanged(object sender, EventArgs e)
+        {
+            //if(ckboxNullStart.Checked)
+            //dateTimeStart.Enabled = false;
+            //else
+            //dateTimeStart.Enabled = true;
+        }
+
+        private void ckboxNullEnd_CheckedChanged(object sender, EventArgs e)
+        {
+            //if (ckboxNullStart.Checked)
+            //    dateTimeEnd.Enabled = false;
+            //else
+            //    dateTimeEnd.Enabled = true;
+        }
 
         public frmUpdate_Add()
         {
@@ -27,18 +42,58 @@ namespace TravelExpert_Application
         {
             //packagesBindingSource.Clear();
             packagesBindingSource.Add(packageNow);
-            Refresh();
-        }
-        //Cancel
-        private void btnCancel_Click(object sender, EventArgs e)
-        {
-            Close();
         }
 
+        //Start date
+        private void dateTimeStart_ValueChanged(object sender, EventArgs e)
+        {
+            dateTimeStart.CustomFormat = "dd/MM/yyyy";
+            //if (dateTimeStart.Checked)
+            //    dateTimeStart.Format = DateTimePickerFormat.Long;
+            //else
+            //{
+            //    dateTimeStart.CustomFormat = " ";
+            //    dateTimeStart.Format = DateTimePickerFormat.Custom;
+            //}
+        }
+        private void dateTimeStart_KeyDown(object sender, KeyEventArgs e)
+        {
+            if ((e.KeyCode == Keys.Delete) || (e.KeyCode == Keys.Back))
+            {
+                dateTimeStart.CustomFormat = " ";
+            }
+        }
+
+        // End date
+        private void dateTimeEnd_ValueChanged(object sender, EventArgs e)
+        {
+            dateTimeEnd.CustomFormat = "dd/MM/yyyy";
+
+            //if (dateTimeEnd.Checked)
+            //    dateTimeEnd.Format = DateTimePickerFormat.Long;
+            //else
+            //{
+            //    dateTimeEnd.CustomFormat = " ";
+            //    dateTimeEnd.Format = DateTimePickerFormat.Custom;
+            //}
+
+        }
+        private void dateTimeEnd_KeyDown(object sender, KeyEventArgs e)
+        {
+            if ((e.KeyCode == Keys.Delete) || (e.KeyCode == Keys.Back))
+            {
+                dateTimeEnd.CustomFormat = " ";
+            }
+        }
         //Saving and validation
         private void btnSave_Click(object sender, EventArgs e)
         {
             //Validation
+            //Start date
+
+            ////End date
+
+
 
             bool success = PackageDB.UpdatePackage(packageOld, packageNow);
             if (success)
@@ -49,16 +104,15 @@ namespace TravelExpert_Application
             {
                 this.DialogResult = DialogResult.Retry;
             }
+
         }
 
-        private void ckboxNullStart_CheckedChanged(object sender, EventArgs e)
+        //Cancel
+        private void btnCancel_Click(object sender, EventArgs e)
         {
-            dateTimeStart.CustomFormat = "";
+            Close();
         }
 
-        private void ckboxNullEnd_CheckedChanged(object sender, EventArgs e)
-        {
-            dateTimeEnd.CustomFormat = "";
-        }
+
     }//end of Update
 }//End of namespace

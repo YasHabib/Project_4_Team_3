@@ -48,7 +48,7 @@ namespace TravelExpert_Application
             if (tbInput.Text == "") //Validating empty textbox
             {
                 valid = false;
-                MessageBox.Show("Description, Name and Base price fields can not be empty", "Input Error");
+                MessageBox.Show("Description and Name can not be empty", "Input Error");
                 tbInput.Focus();
             }
             return valid;
@@ -61,7 +61,7 @@ namespace TravelExpert_Application
             if (!tbInput.Text.All(Char.IsLetter)) //Validating for letters
             {
                 valid = false;
-                MessageBox.Show("Name field accept letters only.", "Input Error");
+                MessageBox.Show("This field accepts letters ", "Input Error");
                 tbInput.SelectAll();
                 tbInput.Focus();
             }
@@ -82,35 +82,27 @@ namespace TravelExpert_Application
         //    return valid;
         //}
 
-        //Validating and comparing dates
-        public static bool ValidDate(MaskedTextBox mkStart, MaskedTextBox mkEnd)
+        public static bool ValidDate(TextBox start, TextBox end)
         {
             bool valid = true; // empty is valid
-            DateTime startDate;
-            if ((mkStart.Text != null) && (mkEnd.Text != null))
+            DateTime startDate = Convert.ToDateTime(start.Text);
+            DateTime endDate = Convert.ToDateTime(end.Text);
+            if (start.Text != "")
             {
-                if (DateTime.TryParse(mkStart.Text, out startDate))
+                if ((DateTime.TryParse(start.Text, out startDate)) && (DateTime.TryParse(end.Text, out endDate)))
                 {
-                    DateTime start = Convert.ToDateTime(mkStart.Text);
-                    DateTime end = Convert.ToDateTime(mkEnd.Text);
 
-                    if (start < end)
+                    if (startDate < endDate)
                     {
                         valid = false;
-                        MessageBox.Show("Base price needs to be higher than commission price","Input Error");
+                        MessageBox.Show("Start date must be before End date", "Input Error");
                     }
                 }
-                //else
-                //{
-                //    valid = false;
-                //    MessageBox.Show("Please enter Date Ended in format MM/DD/YYYY", "Data Error");
-                //}
-            }
-            else
-            {
-                valid = true;
-                mkStart.Text = null;
-                mkEnd.Text = null;
+                else
+                {
+                    valid = false;
+                    MessageBox.Show("Please enter Date Ended in format MM/DD/YYYY", "Input Error");
+                }
             }
             return valid;
         }
